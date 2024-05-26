@@ -28,57 +28,57 @@ ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBnoxKR7llvIC/zepZokSb2FyqO69BVCiFA
 
 
 # **Sommaire**
-[Presentation Ansible	2******](#_toc167621238)***
+[**Presentation TERRAFORM**](#_toc167621238)
 
-[**1. Qu'est-ce que Terraform ?	2****](#_toc167621239)
+[**1. Qu'est-ce que Terraform ?**](#_toc167621239)
 
-[**2. Fonctionnalités Principales	2****](#_toc167621240)
+[**2. Fonctionnalités Principales**](#_toc167621240)
 
-[**3. Avantages	2****](#_toc167621241)
+[**3. Avantages**](#_toc167621241)
 
-[**5. Usage de Base	3****](#_toc167621242)
+[**5. Usage de Base**](#_toc167621242)
 
-[**6. Dossier a modifier pour créer ou suprimé une VM	3****](#_toc167621243)
+[**6. Dossier a modifier pour créer ou supprimer une VM**](#_toc167621243)
 
-[Paramètres Essentiels pour la Création d'une VM	4](#_toc167621244)
+- [Paramètres Essentiels pour la Création d'une VM](#_toc167621244)
 
-[**7. Communauté et Support	5****](#_toc167621245)
+[**7. Communauté et Support**](#_toc167621245)
 
-[**8. Conclusion	5****](#_toc167621246)
+[**8. Conclusion**](#_toc167621246)
 
-[***Présentation de Ansible	5******](#_toc167621247)
+[**9. Présentation de Ansible**](#_toc167621247)
 
-[**Introduction	5****](#_toc167621248)
+- [**Introduction**](#_toc167621248)
 
-[**Principales Caractéristiques	5****](#_toc167621249)
+- [**Principales Caractéristiques**](#_toc167621249)
 
-[**Architecture	5****](#_toc167621250)
+- [**Architecture**](#_toc167621250)
 
-[**Modification de Playbook package	6****](#_toc167621251)
+- [**Modification de Playbook package**](#_toc167621251)
 
-[Modification des packages	6](#_toc167621252)
+- [Modification des packages](#_toc167621252)
 
-[Ajoutez ou suprimer une vm	9](#_toc167621253)
+- [Ajoutez ou suprimer une vm](#_toc167621253)
 
-[Déclarer une vm	10](#_toc167621254)
+- [Déclarer une vm](#_toc167621254)
 
-[**Modification des utilisateur	11****](#_toc167621255)
+- [**Modification des utilisateur**](#_toc167621255)
 
-[**Cas d'Utilisation	13****](#_toc167621256)
+- [**Cas d'Utilisation**](#_toc167621256)
 
-[**Avantages	13****](#_toc167621257)
+- [**Avantages**](#_toc167621257)
 
-[**Conclusion	13****](#_toc167621258)
+- [**Conclusion**](#_toc167621258)
 
-[***Lien entre terraform et ansible	13******](#_toc167621259)
+[**10. Lien entre terraform et ansible**](#_toc167621259)
 
-[**1. Configuration de Terraform	13****](#_toc167621260)
+- [**Configuration de Terraform**](#_toc167621260)
 
-[**2. Script Shell pour Exécuter les Playbooks Ansible	13****](#_toc167621261)
+- [**Script Shell pour Exécuter les Playbooks Ansible**](#_toc167621261)
 
-[**3. Script Expect pour Gérer les Demandes de Mot de Passe	14****](#_toc167621262)
+- [**Script Expect pour Gérer les Demandes de Mot de Passe**](#_toc167621262)
 
-[***Lancé la création et la configuration des VM	14******](#_toc167621263)
+- [**Lancer la création et la configuration des VM**](#_toc167621263)
 
 
 
@@ -92,47 +92,47 @@ Terraform est un outil open source utilisé pour construire, modifier et version
 
 ## <a name="_toc167621240"></a>2. Fonctionnalités Principales
 
-`    `Provisionnement Multi-Cloud : Terraform permet de gérer les infrastructures sur divers fournisseurs de cloud tels qu'AWS, Azure, Google Cloud, ainsi que des plateformes locales comme VMware.
+     Provisionnement Multi-Cloud : Terraform permet de gérer les infrastructures sur divers fournisseurs de cloud tels qu'AWS, Azure, Google Cloud, ainsi que des plateformes locales comme VMware.
 
-`    `Déclaratif : Les utilisateurs définissent ce qu'ils veulent que l'infrastructure soit, et Terraform s'occupe du comment.
+     Déclaratif : Les utilisateurs définissent ce qu'ils veulent que l'infrastructure soit, et Terraform s'occupe du comment.
 
-`    `Planification et Exécution : Terraform génère un plan d'exécution avant d'appliquer les modifications, permettant de voir les changements qui seront effectués.
+     Planification et Exécution : Terraform génère un plan d'exécution avant d'appliquer les modifications, permettant de voir les changements qui seront effectués.
 
-`    `Modules : Réutilisation de configurations à travers des modules, facilitant la gestion et le partage de configurations standardisées.
+     Modules : Réutilisation de configurations à travers des modules, facilitant la gestion et le partage de configurations standardisées.
 
-`    `State Management : Terraform maintient l'état de l'infrastructure, ce qui permet de suivre les modifications et de gérer les dépendances.
+     State Management : Terraform maintient l'état de l'infrastructure, ce qui permet de suivre les modifications et de gérer les dépendances.
 
 ## <a name="_toc167621241"></a>3. Avantages
 
-`    `Automatisation : Réduit le besoin d'interventions manuelles, diminuant ainsi les erreurs humaines.
+     Automatisation : Réduit le besoin d'interventions manuelles, diminuant ainsi les erreurs humaines.
 
-`    `Portabilité : Les configurations peuvent être appliquées sur différents fournisseurs de cloud sans modifications significatives.
+     Portabilité : Les configurations peuvent être appliquées sur différents fournisseurs de cloud sans modifications significatives.
 
-`    `Versioning : Les configurations peuvent être versionnées et partagées, ce qui facilite la collaboration et la gestion des modifications.
+     Versioning : Les configurations peuvent être versionnées et partagées, ce qui facilite la collaboration et la gestion des modifications.
 
-`    `Idempotence : Les opérations Terraform sont idempotentes, garantissant que l'exécution d'un plan plusieurs fois donnera le même résultat.
+     Idempotence : Les opérations Terraform sont idempotentes, garantissant que l'exécution d'un plan plusieurs fois donnera le même résultat.
 
 4\. Architecture
 
-`    `Configuration Files : Les fichiers de configuration, écrits en HCL, décrivent les ressources et les dépendances.
+     Configuration Files : Les fichiers de configuration, écrits en HCL, décrivent les ressources et les dépendances.
 
-`    `State File : Terraform génère un fichier d'état qui stocke les informations sur les ressources gérées.
+     State File : Terraform génère un fichier d'état qui stocke les informations sur les ressources gérées.
 
-`    `Provider Plugins : Des plugins pour chaque fournisseur de services cloud ou plateforme, permettant de traduire les configurations en API calls spécifiques.
+     Provider Plugins : Des plugins pour chaque fournisseur de services cloud ou plateforme, permettant de traduire les configurations en API calls spécifiques.
 
 ## <a name="_toc167621242"></a>5. Usage de Base
 
-`    `Installation : Téléchargez et installez Terraform depuis le site officiel.
+     Installation : Téléchargez et installez Terraform depuis le site officiel.
 
-`    `Configuration : Créez des fichiers de configuration .tf pour définir les ressources.
+     Configuration : Créez des fichiers de configuration .tf pour définir les ressources.
 
-`    `Initialization : Initialisez le répertoire de travail avec terraform init.
+     Initialization : Initialisez le répertoire de travail avec terraform init.
 
-`    `Planification : Générez et révisez un plan d'exécution avec terraform plan.
+     Planification : Générez et révisez un plan d'exécution avec terraform plan.
 
-`    `Application : Appliquez les modifications avec terraform apply.
+     Application : Appliquez les modifications avec terraform apply.
 
-`    `Destruction : Détruisez l'infrastructure gérée avec terraform destroy si nécessaire.
+     Destruction : Détruisez l'infrastructure gérée avec terraform destroy si nécessaire.
 
 
 
@@ -144,11 +144,11 @@ Pour accéder à ce fichier, suivez ces étapes :
 
 1\. Allez dans le répertoire suivant en utilisant la commande :
 
-`   ````bash
+     ```bash
 
-`   `cd /home/mbureau/Webmason-terraform/terraform/
+     cd /home/mbureau/Webmason-terraform/terraform/
 
-`   ````
+     ```
 
 2\. Une fois dans ce dossier, vous pouvez modifier le fichier `nodes.auto.tfvars.json` avec votre éditeur préféré.
 
@@ -156,65 +156,65 @@ Le contenu du fichier est le suivant :
 
 {
 
-`  `"password": "Password",
+     "password": "Password",
 
-`  `"ssh\_public\_keys": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2c18uyQwwLoP5jQz2AMBtMFhZDPt7wcoNG38BwylxirItHE7jGlWl3Yf924Q7zpVcPyIVHKtQv3RZ1aF7u5SojGPJ+iOisPCg0K4n/OVNuRbgY4Ig4LAwJGkTAnC7ZOy3BQPUIbAu7n1RqFzDNI+/T8GdzJ7U3Trk+JmDjkLTJuK32DBjVig3oE0EmmAMcIMC1jd2QLrRnmN1a4TzhtFdPyCqJeJdhHFFJPgQb2zqmj9094z6vxWnU0scHbOUQrRgE77oi+UvsbXnrr+WCRldvZj9jf6wrAak6HXIDAjsnZ5HB7RVcAR5dUKGrTCJcCkLOetxf1HmFXs0EJ2oGC4jPO4GaALPSV11HTCCUQt07aS0tEk6qqxLvhLz3KrFuKnS8vtRTUsdESKczArxd3BaXwgDtuRWUbPhIMnR27JKL6UMTUEVvfRb4rYu1LdxRuxt1JLumwQlWjjFE4T30S11oaR/Ck1954tNCF1wwjmjqomUa2Xq/cXUUMmf+7SzUoU= mbureau@webmason",
+     "ssh\_public\_keys": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2c18uyQwwLoP5jQz2AMBtMFhZDPt7wcoNG38BwylxirItHE7jGlWl3Yf924Q7zpVcPyIVHKtQv3RZ1aF7u5SojGPJ+iOisPCg0K4n/OVNuRbgY4Ig4LAwJGkTAnC7ZOy3BQPUIbAu7n1RqFzDNI+/T8GdzJ7U3Trk+JmDjkLTJuK32DBjVig3oE0EmmAMcIMC1jd2QLrRnmN1a4TzhtFdPyCqJeJdhHFFJPgQb2zqmj9094z6vxWnU0scHbOUQrRgE77oi+UvsbXnrr+WCRldvZj9jf6wrAak6HXIDAjsnZ5HB7RVcAR5dUKGrTCJcCkLOetxf1HmFXs0EJ2oGC4jPO4GaALPSV11HTCCUQt07aS0tEk6qqxLvhLz3KrFuKnS8vtRTUsdESKczArxd3BaXwgDtuRWUbPhIMnR27JKL6UMTUEVvfRb4rYu1LdxRuxt1JLumwQlWjjFE4T30S11oaR/Ck1954tNCF1wwjmjqomUa2Xq/cXUUMmf+7SzUoU= mbureau@webmason",
 
-`  `"target\_node": "cfai2024",
+     "target\_node": "cfai2024",
 
-`  `"pool": "jdias",
+     "pool": "jdias",
 
-`  `"containers": [
+     "containers": [
 
-`    `{
+     {
 
-`      `"name": "bdd",
+        "name": "bdd",
 
-`      `"cpuunits": 256,
+        "cpuunits": 256,
 
-`      `"rootfs\_size": "2G",
+        "rootfs\_size": "2G",
 
-`      `"memory": 256,
+        "memory": 256,
 
-`      `"ostemplate": "local:vztmpl/debian-12-standard\_12.2-1\_amd64.tar.zst",
+        "ostemplate": "local:vztmpl/debian-12-standard\_12.2-1\_amd64.tar.zst",
 
-`      `"ip6": "2a03:5840:111:1024:caca:caca:caca:0001/64"
+        "ip6": "2a03:5840:111:1024:caca:caca:caca:0001/64"
 
-`    `},
+     },
 
-`    `{
+     {
 
-`      `"name": "vitrine",
+        "name": "vitrine",
 
-`      `"cpuunits": 256,
+        "cpuunits": 256,
 
-`      `"rootfs\_size": "2G",
+        "rootfs\_size": "2G",
 
-`      `"memory": 256,
+        "memory": 256,
 
-`      `"ostemplate": "local:vztmpl/debian-12-standard\_12.2-1\_amd64.tar.zst",
+        "ostemplate": "local:vztmpl/debian-12-standard\_12.2-1\_amd64.tar.zst",
 
-`      `"ip6": "2a03:5840:111:1024:caca:caca:caca:0002/64"
+        "ip6": "2a03:5840:111:1024:caca:caca:caca:0002/64"
 
-`    `},
+     },
 
-`    `{
+     {
 
-`      `"name": "gestion",
+        "name": "gestion",
 
-`      `"cpuunits": 256,
+        "cpuunits": 256,
 
-`      `"rootfs\_size": "2G",
+        "rootfs\_size": "2G",
 
-`      `"memory": 256,
+        "memory": 256,
 
-`      `"ostemplate": "local:vztmpl/debian-12-standard\_12.2-1\_amd64.tar.zst",
+        "ostemplate": "local:vztmpl/debian-12-standard\_12.2-1\_amd64.tar.zst",
 
-`      `"ip6": "2a03:5840:111:1024:caca:caca:caca:0003/64"
+        "ip6": "2a03:5840:111:1024:caca:caca:caca:0003/64"
 
-`    `}
+     }
 
-`  `]
+     ]
 
 }
 
@@ -270,209 +270,209 @@ Pour accéder à ce fichier, suivez ces étapes :
 
 1\. Allez dans le répertoire suivant en utilisant la commande :
 
-`   ````bash
-
-`   `cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/playbooks   ```
+```bash
+   cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/playbooks   
+```
 
 2\. Une fois dans ce dossier, vous pouvez modifier le fichier ` install\_packages.yaml ` avec votre éditeur préféré.
 
 Le contenu du fichier est le suivant :
-
+```
 \---
 
 \- name: Install prerequisites and configure services
 
-`  `hosts: all
+     hosts: all
 
-`  `become: true
+     become: true
 
-`  `tasks:
+     tasks:
 
-`    `- name: Ensure prerequisites and required packages are installed
+     - name: Ensure prerequisites and required packages are installed
 
-`      `apt:
+        apt:
 
-`        `name:
+          name:
 
-`          `- gnupg
+              - gnupg
 
-`          `- wget
+              - wget
 
-`          `- lsb-release
+              - lsb-release
 
-`        `state: present
+          state: present
 
-`        `update\_cache: yes
+          update\_cache: yes
 
-`      `when: ansible\_os\_family == "Debian"
+        when: ansible\_os\_family == "Debian"
 
 \- name: Configure Apache on web servers
 
-`  `hosts: web:web2
+     hosts: web:web2
 
-`  `become: true
+     become: true
 
-`  `tasks:
+     tasks:
 
-`    `- name: Install Apache
+     - name: Install Apache
 
-`      `apt:
+        apt:
 
-`        `name: apache2
+          name: apache2
 
-`        `state: present
+          state: present
 
-`        `update\_cache: yes
+          update\_cache: yes
 
-`    `- name: Start and enable Apache service
+     - name: Start and enable Apache service
 
-`      `service:
+        service:
 
-`        `name: apache2
+          name: apache2
 
-`        `state: started
+          state: started
 
-`        `enabled: true
+          enabled: true
 
-`    `- name: Copy HTML and CSS files to web root on web
+     - name: Copy HTML and CSS files to web root on web
 
-`      `copy:
+        copy:
 
-`        `src: "{{ item.src }}"
+          src: "{{ item.src }}"
 
-`        `dest: "{{ item.dest }}"
+          dest: "{{ item.dest }}"
 
-`        `owner: www-data
+          owner: www-data
 
-`        `group: www-data
+          group: www-data
 
-`        `mode: '0644'
+          mode: '0644'
 
-`      `loop:
+        loop:
 
-`        `- { src: 'files/index.html', dest: '/var/www/html/index.html' }
+          - { src: 'files/index.html', dest: '/var/www/html/index.html' }
 
-`        `- { src: 'files/styles.css', dest: '/var/www/html/styles.css' }
+          - { src: 'files/styles.css', dest: '/var/www/html/styles.css' }
 
-`      `when: inventory\_hostname in groups['web']
+        when: inventory\_hostname in groups['web']
 
-`    `- name: Copy HTML and CSS files to web root on web2
+     - name: Copy HTML and CSS files to web root on web2
 
-`      `copy:
+        copy:
 
-`        `src: "{{ item.src }}"
+          src: "{{ item.src }}"
 
-`        `dest: "{{ item.dest }}"
+          dest: "{{ item.dest }}"
 
-`        `owner: www-data
+          owner: www-data
 
-`        `group: www-data
+          group: www-data
 
-`        `mode: '0644'
+          mode: '0644'
 
-`      `loop:
+        loop:
 
-`        `- { src: 'files/web2/index.html', dest: '/var/www/html/index.html' }
+          - { src: 'files/web2/index.html', dest: '/var/www/html/index.html' }
 
-`        `- { src: 'files/web2/styles.css', dest: '/var/www/html/styles.css' }
+          - { src: 'files/web2/styles.css', dest: '/var/www/html/styles.css' }
 
-`      `when: inventory\_hostname in groups['web2']
+        when: inventory\_hostname in groups['web2']
 
 \- name: Install and configure phpMyAdmin on MySQL server
 
-`  `hosts: phpmyadmin
+     hosts: phpmyadmin
 
-`  `become: true
+     become: true
 
-`  `tasks:
+     tasks:
 
-`    `- name: Install PHP and required extensions
+     - name: Install PHP and required extensions
 
-`      `apt:
+        apt:
 
-`        `name:
+          name:
 
-`          `- php
+              - php
 
-`          `- php-mbstring
+              - php-mbstring
 
-`          `- php-zip
+              - php-zip
 
-`          `- php-gd
+              - php-gd
 
-`          `- php-json
+              - php-json
 
-`          `- php-curl
+              - php-curl
 
-`        `state: present
+          state: present
 
-`        `update\_cache: yes
+          update\_cache: yes
 
-`    `- name: Install Apache
+     - name: Install Apache
 
-`      `apt:
+        apt:
 
-`        `name: apache2
+          name: apache2
 
-`        `state: present
+          state: present
 
-`        `update\_cache: yes
+          update\_cache: yes
 
-`    `- name: Start and enable Apache service
+     - name: Start and enable Apache service
 
-`      `service:
+        service:
 
-`        `name: apache2
+          name: apache2
 
-`        `state: started
+          state: started
 
-`        `enabled: true
+          enabled: true
 
-`    `- name: Install phpMyAdmin
+     - name: Install phpMyAdmin
 
-`      `apt:
+        apt:
 
-`        `name: phpmyadmin
+          name: phpmyadmin
 
-`        `state: present
+          state: present
 
-`        `update\_cache: yes
+          update\_cache: yes
 
-`    `- name: Ensure phpMyAdmin configuration is included in Apache
+     - name: Ensure phpMyAdmin configuration is included in Apache
 
-`      `blockinfile:
+        blockinfile:
 
-`        `path: /etc/apache2/apache2.conf
+          path: /etc/apache2/apache2.conf
 
-`        `block: |
+          block: |
 
-`          `# phpMyAdmin Configuration
+              # phpMyAdmin Configuration
 
-`          `Include /etc/phpmyadmin/apache.conf
+              Include /etc/phpmyadmin/apache.conf
 
-`    `- name: Configure Apache to redirect the default page to phpMyAdmin
+     - name: Configure Apache to redirect the default page to phpMyAdmin
 
-`      `blockinfile:
+        blockinfile:
 
-`        `path: /etc/apache2/sites-available/000-default.conf
+          path: /etc/apache2/sites-available/000-default.conf
 
-`        `insertafter: '^<VirtualHost \\*:80>$'
+          insertafter: '^<VirtualHost \\*:80>$'
 
-`        `block: |
+          block: |
 
-`          `# Redirect the default page to phpMyAdmin
+              # Redirect the default page to phpMyAdmin
 
-`          `RedirectMatch ^/$ /phpmyadmin/
+              RedirectMatch ^/$ /phpmyadmin/
 
-`    `- name: Restart Apache to apply changes
+     - name: Restart Apache to apply changes
 
-`      `service:
+        service:
 
-`        `name: apache2
+          name: apache2
 
-`        `state: restarted
+          state: restarted
 
-`        `enabled: true
+          enabled: true
 
 explication pour modifier :
 
@@ -480,27 +480,28 @@ explication pour modifier :
 
 \- name: Installer et démarrer Apache
 
-`  `hosts: webservers
+     hosts: webservers
 
-`  `become: yes
+     become: yes
 
-`  `tasks:
+     tasks:
 
-`  `- name: Installer Apache
+     - name: Installer Apache
 
-`    `apt:
+     apt:
 
-`      `name: apache2
+        name: apache2
 
-`      `state: present
+        state: present
 
-`  `- name: Démarrer le service Apache
+     - name: Démarrer le service Apache
 
-`    `service:
+     service:
 
-`      `name: apache2
+        name: apache2
 
-`      `state: started
+        state: started
+```
 
 1. **Déclaration de base (---)**:
    1. Indique le début d'un document YAML. Cela permet à Ansible de comprendre que ce qui suit est un playbook.
@@ -529,15 +530,14 @@ Pour ajouter ou supprimer une machine virtuelle, vous devez vous rendre dans le 
 
 1\. Allez dans le répertoire suivant en utilisant la commande :
 
-`   ````bash
+```bash
+   cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/host\_vars   
+```
 
-`   `cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/host\_vars   ```
-
-2\. ```bash
-
-`   `Nano (nom de la vm).yaml
-
-`   ````
+2\. 
+```bash
+   Nano (nom de la vm).yaml
+```
 
 
 Exemple de contenue du fichier :
@@ -557,9 +557,9 @@ Pour accéder à ce fichier, suivez ces étapes :
 
 1\. Allez dans le répertoire suivant en utilisant la commande :
 
-`   ````bash
-
-`   `cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/host\_vars   ```
+```bash
+     cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/host\_vars   
+```
 
 2\. Une fois dans ce dossier, vous pouvez modifier le fichier ` inventory.yaml ` avec votre éditeur préféré.
 
@@ -567,49 +567,49 @@ Contenu du fichier :
 
 all:
 
-`  `vars:
+     vars:
 
-`    `ansible\_ssh\_common\_args: '-o ServerAliveInterval=50 -o ServerAliveCountMax=10'
+     ansible\_ssh\_common\_args: '-o ServerAliveInterval=50 -o ServerAliveCountMax=10'
 
 web:
 
-`  `hosts:
+     hosts:
 
-`    `vitrine:
+     vitrine:
 
-`      `ansible\_host: "{{ host }}"
+        ansible\_host: "{{ host }}"
 
-`      `ansible\_user: "{{ login }}"
+        ansible\_user: "{{ login }}"
 
 web2:
 
-`  `hosts:
+     hosts:
 
-`    `gestion:
+     gestion:
 
-`      `ansible\_host: "{{ host }}"
+        ansible\_host: "{{ host }}"
 
-`      `ansible\_user: "{{ login }}"
+        ansible\_user: "{{ login }}"
 
 phpmyadmin:
 
-`  `hosts:
+     hosts:
 
-`    `bdd:
+     bdd:
 
-`      `ansible\_host: "{{ host }}"
+        ansible\_host: "{{ host }}"
 
-`      `ansible\_user: "{{ login }}"
+        ansible\_user: "{{ login }}"
 
 cfai:
 
-`  `children:
+     children:
 
-`    `web:
+     web:
 
-`    `web2:
+     web2:
 
-`    `phpmyadmin:
+     phpmyadmin:
 
 
 
@@ -644,9 +644,9 @@ Pour accéder à ce fichier, suivez ces étapes :
 
 1\. Allez dans le répertoire suivant en utilisant la commande :
 
-`   ````bash
-
-`   `cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/group\_vars   ```
+```bash
+   cd / /home/mbureau/Webmason-terraform/ansible/ansible-webmason/WebMason/group\_vars   
+```
 
 2\. Une fois dans ce dossier, vous pouvez modifier le fichier ` all.yaml ` avec votre éditeur préféré.
 
@@ -656,35 +656,35 @@ default\_shell: /bin/bash
 
 myusers:
 
-`  `- login: mbureau
+     - login: mbureau
 
-`    `pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXdtB+M6QXOtqTFm9SnoOVmaDwyHbS2L8LIFo6bXDA9bmIfVaI0z9HxMFYOzP+nCIKHWGeolng9jtGsb5HG3kJIdyh1oJyA7uusB2QdgffsMrRi40m7rgJ+SqwdT6UradbtbBftV8PUrWW/lrAERk2vG9a3PhqdZK294Ne6+dqP5e2n83IJazdNgwH4TtjpeZv3/wQ3kcZqQ0SAYD6DEeBCo2cq9Iltx3YFG7yB9yFB2MOuK+6+p/w2QvjKumaWHv3/8iFNFhjg8Vw9auOu4VHgAhqoySZLKXvbZWAW9qPqJ2TTwSesb2Z4ykiRcEPT+4IiyQUdfvs+WijxpTcvuUl36kXb6t6RHcl6ruKUw+CRQIjvqwzg32UqcB17NSBghjMJNjv2/8PpOkh++wQXOY2c5Lyt87Izds5dKH31CZKjug6ZdCGbkUniVNcOhSWsHQiNqWPxzwpxsEmJTEjjr26E76Dj71HHwzCxRC5argM/tymnLQuRdbQqywJ9e9+ZxFWuBWuJITDn1tYFhDoMD8t8AwiAi+m1re3lw6pgckhpZ0J4JHmy4vnEEk/6BNfgGrXLcqkKfSz4ZytA8sC7yuC9yc9GaoES62xaMDfOpyyMF0xvKdEoNAqBsf9xVY0S0CqqM+eX/tsMwegdqWAITkGmWEW4V+LVo6S2PaEdL+4fQ== bastien@MacBook-Air-de-Bastien.local
+     pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXdtB+M6QXOtqTFm9SnoOVmaDwyHbS2L8LIFo6bXDA9bmIfVaI0z9HxMFYOzP+nCIKHWGeolng9jtGsb5HG3kJIdyh1oJyA7uusB2QdgffsMrRi40m7rgJ+SqwdT6UradbtbBftV8PUrWW/lrAERk2vG9a3PhqdZK294Ne6+dqP5e2n83IJazdNgwH4TtjpeZv3/wQ3kcZqQ0SAYD6DEeBCo2cq9Iltx3YFG7yB9yFB2MOuK+6+p/w2QvjKumaWHv3/8iFNFhjg8Vw9auOu4VHgAhqoySZLKXvbZWAW9qPqJ2TTwSesb2Z4ykiRcEPT+4IiyQUdfvs+WijxpTcvuUl36kXb6t6RHcl6ruKUw+CRQIjvqwzg32UqcB17NSBghjMJNjv2/8PpOkh++wQXOY2c5Lyt87Izds5dKH31CZKjug6ZdCGbkUniVNcOhSWsHQiNqWPxzwpxsEmJTEjjr26E76Dj71HHwzCxRC5argM/tymnLQuRdbQqywJ9e9+ZxFWuBWuJITDn1tYFhDoMD8t8AwiAi+m1re3lw6pgckhpZ0J4JHmy4vnEEk/6BNfgGrXLcqkKfSz4ZytA8sC7yuC9yc9GaoES62xaMDfOpyyMF0xvKdEoNAqBsf9xVY0S0CqqM+eX/tsMwegdqWAITkGmWEW4V+LVo6S2PaEdL+4fQ== bastien@MacBook-Air-de-Bastien.local
 
-`    `groups: sudo, \_ssh
+     groups: sudo, \_ssh
 
-`  `- login: jdias
+     - login: jdias
 
-`    `pubkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE5i68nOFjp7fkqqSctterFi9v5RgQ0YvXIqv3QimGYG utilisateur@DESKTOP-HRJ54SO
+     pubkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE5i68nOFjp7fkqqSctterFi9v5RgQ0YvXIqv3QimGYG utilisateur@DESKTOP-HRJ54SO
 
-`    `groups: sudo, \_ssh
+     groups: sudo, \_ssh
 
-`  `- login: bfayant
+     - login: bfayant
 
-`    `pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXdtB+M6QXOtqTFm9SnoOVmaDwyHbS2L8LIFo6bXDA9bmIfVaI0z9HxMFYOzP+nCIKHWGeolng9jtGsb5HG3kJIdyh1oJyA7uusB2QdgffsMrRi40m7rgJ+SqwdT6UradbtbBftV8PUrWW/lrAERk2vG9a3PhqdZK294Ne6+dqP5e2n83IJazdNgwH4TtjpeZv3/wQ3kcZqQ0SAYD6DEeBCo2cq9Iltx3YFG7yB9yFB2MOuK+6+p/w2QvjKumaWHv3/8iFNFhjg8Vw9auOu4VHgAhqoySZLKXvbZWAW9qPqJ2TTwSesb2Z4ykiRcEPT+4IiyQUdfvs+WijxpTcvuUl36kXb6t6RHcl6ruKUw+CRQIjvqwzg32UqcB17NSBghjMJNjv2/8PpOkh++wQXOY2c5Lyt87Izds5dKH31CZKjug6ZdCGbkUniVNcOhSWsHQiNqWPxzwpxsEmJTEjjr26E76Dj71HHwzCxRC5argM/tymnLQuRdbQqywJ9e9+ZxFWuBWuJITDn1tYFhDoMD8t8AwiAi+m1re3lw6pgckhpZ0J4JHmy4vnEEk/6BNfgGrXLcqkKfSz4ZytA8sC7yuC9yc9GaoES62xaMDfOpyyMF0xvKdEoNAqBsf9xVY0S0CqqM+eX/tsMwegdqWAITkGmWEW4V+LVo6S2PaEdL+4fQ== bastien@MacBook-Air-de-Bastien.local
+     pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXdtB+M6QXOtqTFm9SnoOVmaDwyHbS2L8LIFo6bXDA9bmIfVaI0z9HxMFYOzP+nCIKHWGeolng9jtGsb5HG3kJIdyh1oJyA7uusB2QdgffsMrRi40m7rgJ+SqwdT6UradbtbBftV8PUrWW/lrAERk2vG9a3PhqdZK294Ne6+dqP5e2n83IJazdNgwH4TtjpeZv3/wQ3kcZqQ0SAYD6DEeBCo2cq9Iltx3YFG7yB9yFB2MOuK+6+p/w2QvjKumaWHv3/8iFNFhjg8Vw9auOu4VHgAhqoySZLKXvbZWAW9qPqJ2TTwSesb2Z4ykiRcEPT+4IiyQUdfvs+WijxpTcvuUl36kXb6t6RHcl6ruKUw+CRQIjvqwzg32UqcB17NSBghjMJNjv2/8PpOkh++wQXOY2c5Lyt87Izds5dKH31CZKjug6ZdCGbkUniVNcOhSWsHQiNqWPxzwpxsEmJTEjjr26E76Dj71HHwzCxRC5argM/tymnLQuRdbQqywJ9e9+ZxFWuBWuJITDn1tYFhDoMD8t8AwiAi+m1re3lw6pgckhpZ0J4JHmy4vnEEk/6BNfgGrXLcqkKfSz4ZytA8sC7yuC9yc9GaoES62xaMDfOpyyMF0xvKdEoNAqBsf9xVY0S0CqqM+eX/tsMwegdqWAITkGmWEW4V+LVo6S2PaEdL+4fQ== bastien@MacBook-Air-de-Bastien.local
 
-`    `groups: sudo, \_ssh
+     groups: sudo, \_ssh
 
-`  `- login: fbouloumie
+     - login: fbouloumie
 
-`    `pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrPnKKEB/rRdTzaBPHOPMq56tRf3MxutmVIQUGZij8U1dWffLYgpQjK4k+UygAZfYoYNiWRNkxBrK4ddqGtFqhRBY3IBTkHObGCS4yd6FvTcHsOut4Wog3P96KaEg4dNkMCVxCP8P/K6hqKqqznoL8hsBOAZPhdKqD6GRDzzBRzVtcrNw8/WKrlH3+pE3OJOZP7q9w+IeZFJh3WKEbqwMVzbtieaDffaU84LSONunpOs4RhlfAbG2QAKCKJh01uUOgFK4uBN4Q31Fj1yRAigGorv8NtIhTc51cC3C5jPxdh55vSSUuTXXqMgeyD8L2gvLBPNgh2VH0lfSNEFX5Iss821Zbnl/KI3XwXoiMnZO12le8KOKi0y73LAAmVEglaHVCluGnf1cTq3LLkLJArmYfE2Rvgf9o0JEsxpCixa06QHF6Z3SJVk6lHrLcce5YqRxxzjLxqXfU8dqdMM7M4pmwQh5FkKrOzcogWMSTPXWwmWmofVb4Gd1ZfQ30CTCnD0M= francois@DESKTOP-296E9TG
+     pubkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrPnKKEB/rRdTzaBPHOPMq56tRf3MxutmVIQUGZij8U1dWffLYgpQjK4k+UygAZfYoYNiWRNkxBrK4ddqGtFqhRBY3IBTkHObGCS4yd6FvTcHsOut4Wog3P96KaEg4dNkMCVxCP8P/K6hqKqqznoL8hsBOAZPhdKqD6GRDzzBRzVtcrNw8/WKrlH3+pE3OJOZP7q9w+IeZFJh3WKEbqwMVzbtieaDffaU84LSONunpOs4RhlfAbG2QAKCKJh01uUOgFK4uBN4Q31Fj1yRAigGorv8NtIhTc51cC3C5jPxdh55vSSUuTXXqMgeyD8L2gvLBPNgh2VH0lfSNEFX5Iss821Zbnl/KI3XwXoiMnZO12le8KOKi0y73LAAmVEglaHVCluGnf1cTq3LLkLJArmYfE2Rvgf9o0JEsxpCixa06QHF6Z3SJVk6lHrLcce5YqRxxzjLxqXfU8dqdMM7M4pmwQh5FkKrOzcogWMSTPXWwmWmofVb4Gd1ZfQ30CTCnD0M= francois@DESKTOP-296E9TG
 
-`    `groups: sudo, \_ssh
+     groups: sudo, \_ssh
 
-`  `- login: javond
+     - login: javond
 
-`    `pubkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBnoxKR7llvIC/zepZokSb2FyqO69BVCiFAWKTULE4bL jerome@djay
+     pubkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBnoxKR7llvIC/zepZokSb2FyqO69BVCiFAWKTULE4bL jerome@djay
 
-`    `groups: sudo, \_ssh
+     groups: sudo, \_ssh
 
 - **"username: "nom\_d\_utilisateur"** :
   - Nom de l'utilisateur à créer. Vous devez remplacer "nom\_d\_utilisateur" par le nom réel de l'utilisateur.
@@ -728,19 +728,15 @@ Voici ce que fait le script Expect :
 
 Pour lancer la création et la configuration automatique, il suffit de se rendre dans le fichier « terraform » en exécutant la commande suivante :
 
-`   ````bash
-
-`   `cd /home/mbureau/Webmason-terraform/terraform/
-
-`   ````
+```bash
+cd /home/mbureau/Webmason-terraform/terraform/
+```
 
 Ensuite, exécutez la commande suivante :
 
-\```bash
-
+```bash
 ./terraform apply
-
-`   ````
+```
 
 Quand la question « Enter a value: » s'affiche, répondez par « yes ».
 
