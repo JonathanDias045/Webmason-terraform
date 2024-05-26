@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **Documentation Terraform et ansible**
 
 
@@ -722,4 +723,30 @@ Quand la question « Enter a value: » s'affiche, répondez par « yes ».
 
 Une fois cette étape réalisée, il faudra attendre environ 5 minutes pour que les machines virtuelles soient créées et configurées.
 
+=======
+# Identifiant nécessaire
+>>>>>>> 5c0c82cfc1a3d4b08081b8b1d9f73816118498a2
 
+### Conteneur Hôte
+
+- __root | webmason__
+- __jdias | jdias__
+```bash
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE5i68nOFjp7fkqqSctterFi9v5RgQ0YvXIqv3QimGYG utilisateur@DESKTOP-HRJ54SO
+```
+- __mbureau | mbureau__
+```bash
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXdtB+M6QXOtqTFm9SnoOVmaDwyHbS2L8LIFo6bXDA9bmIfVaI0z9HxMFYOzP+nCIKHWGeolng9jtGsb5HG3kJIdyh1oJyA7uusB2QdgffsMrRi40m7rgJ+SqwdT6UradbtbBftV8PUrWW/lrAERk2vG9a3PhqdZK294Ne6+dqP5e2n83IJazdNgwH4TtjpeZv3/wQ3kcZqQ0SAYD6DEeBCo2cq9Iltx3YFG7yB9yFB2MOuK+6+p/w2QvjKumaWHv3/8iFNFhjg8Vw9auOu4VHgAhqoySZLKXvbZWAW9qPqJ2TTwSesb2Z4ykiRcEPT+4IiyQUdfvs+WijxpTcvuUl36kXb6t6RHcl6ruKUw+CRQIjvqwzg32UqcB17NSBghjMJNjv2/8PpOkh++wQXOY2c5Lyt87Izds5dKH31CZKjug6ZdCGbkUniVNcOhSWsHQiNqWPxzwpxsEmJTEjjr26E76Dj71HHwzCxRC5argM/tymnLQuRdbQqywJ9e9+ZxFWuBWuJITDn1tYFhDoMD8t8AwiAi+m1re3lw6pgckhpZ0J4JHmy4vnEEk/6BNfgGrXLcqkKfSz4ZytA8sC7yuC9yc9GaoES62xaMDfOpyyMF0xvKdEoNAqBsf9xVY0S0CqqM+eX/tsMwegdqWAITkGmWEW4V+LVo6S2PaEdL+4fQ== bastien@MacBook-Air-de-Bastien.local
+```
+- __fbouloumie | fbouloumie__
+```bash
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrPnKKEB/rRdTzaBPHOPMq56tRf3MxutmVIQUGZij8U1dWffLYgpQjK4k+UygAZfYoYNiWRNkxBrK4ddqGtFqhRBY3IBTkHObGCS4yd6FvTcHsOut4Wog3P96KaEg4dNkMCVxCP8P/K6hqKqqznoL8hsBOAZPhdKqD6GRDzzBRzVtcrNw8/WKrlH3+pE3OJOZP7q9w+IeZFJh3WKEbqwMVzbtieaDffaU84LSONunpOs4RhlfAbG2QAKCKJh01uUOgFK4uBN4Q31Fj1yRAigGorv8NtIhTc51cC3C5jPxdh55vSSUuTXXqMgeyD8L2gvLBPNgh2VH0lfSNEFX5Iss821Zbnl/KI3XwXoiMnZO12le8KOKi0y73LAAmVEglaHVCluGnf1cTq3LLkLJArmYfE2Rvgf9o0JEsxpCixa06QHF6Z3SJVk6lHrLcce5YqRxxzjLxqXfU8dqdMM7M4pmwQh5FkKrOzcogWMSTPXWwmWmofVb4Gd1ZfQ30CTCnD0M= francois@DESKTOP-296E9TG
+```
+- __bfayant | bfayant__
+```bash
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXdtB+M6QXOtqTFm9SnoOVmaDwyHbS2L8LIFo6bXDA9bmIfVaI0z9HxMFYOzP+nCIKHWGeolng9jtGsb5HG3kJIdyh1oJyA7uusB2QdgffsMrRi40m7rgJ+SqwdT6UradbtbBftV8PUrWW/lrAERk2vG9a3PhqdZK294Ne6+dqP5e2n83IJazdNgwH4TtjpeZv3/wQ3kcZqQ0SAYD6DEeBCo2cq9Iltx3YFG7yB9yFB2MOuK+6+p/w2QvjKumaWHv3/8iFNFhjg8Vw9auOu4VHgAhqoySZLKXvbZWAW9qPqJ2TTwSesb2Z4ykiRcEPT+4IiyQUdfvs+WijxpTcvuUl36kXb6t6RHcl6ruKUw+CRQIjvqwzg32UqcB17NSBghjMJNjv2/8PpOkh++wQXOY2c5Lyt87Izds5dKH31CZKjug6ZdCGbkUniVNcOhSWsHQiNqWPxzwpxsEmJTEjjr26E76Dj71HHwzCxRC5argM/tymnLQuRdbQqywJ9e9+ZxFWuBWuJITDn1tYFhDoMD8t8AwiAi+m1re3lw6pgckhpZ0J4JHmy4vnEEk/6BNfgGrXLcqkKfSz4ZytA8sC7yuC9yc9GaoES62xaMDfOpyyMF0xvKdEoNAqBsf9xVY0S0CqqM+eX/tsMwegdqWAITkGmWEW4V+LVo6S2PaEdL+4fQ== bastien@MacBook-Air-de-Bastien.local
+```
+- __javond | javond__
+```bash
+ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBnoxKR7llvIC/zepZokSb2FyqO69BVCiFAWKTULE4bL jerome@djay
+```
