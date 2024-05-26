@@ -731,7 +731,11 @@ Pour lancer la création et la configuration automatique, il suffit de se rendre
 ```bash
 cd /home/mbureau/Webmason-terraform/terraform/
 ```
+Exécutez la commande suivante :
 
+```bash
+source password.env
+```
 Ensuite, exécutez la commande suivante :
 
 ```bash
