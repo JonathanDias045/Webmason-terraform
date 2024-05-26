@@ -1,0 +1,7 @@
+- hosts: javondc1
+  tasks:
+    - name: Show ip
+      debug:
+        # var: ansible_facts
+        #var: ansible_all_ipv6_addresses
+        var: ansible_default_ipv6.address

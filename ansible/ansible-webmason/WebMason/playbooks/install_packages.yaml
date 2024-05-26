@@ -1,0 +1,109 @@
+---
+- name: Install prerequisites and configure services
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure prerequisites and required packages are installed
+      apt:
+        name:
+          - gnupg
+          - wget
+          - lsb-release
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+- name: Configure Apache on web servers
+  hosts: web:web2
+  become: true
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: true
+
+    - name: Copy HTML and CSS files to web root on web
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      loop:
+        - { src: 'files/index.html', dest: '/var/www/html/index.html' }
+        - { src: 'files/styles.css', dest: '/var/www/html/styles.css' }
+      when: inventory_hostname in groups['web']
+
+    - name: Copy HTML and CSS files to web root on web2
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      loop:
+        - { src: 'files/web2/index.html', dest: '/var/www/html/index.html' }
+        - { src: 'files/web2/styles.css', dest: '/var/www/html/styles.css' }
+      when: inventory_hostname in groups['web2']
+
+- name: Install and configure phpMyAdmin on MySQL server
+  hosts: phpmyadmin
+  become: true
+  tasks:
+    - name: Install PHP and required extensions
+      apt:
+        name:
+          - php
+          - php-mbstring
+          - php-zip
+          - php-gd
+          - php-json
+          - php-curl
+        state: present
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Start and enable Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: true
+
+    - name: Install phpMyAdmin
+      apt:
+        name: phpmyadmin
+        state: present
+        update_cache: yes
+
+    - name: Ensure phpMyAdmin configuration is included in Apache
+      blockinfile:
+        path: /etc/apache2/apache2.conf
+        block: |
+          # phpMyAdmin Configuration
+          Include /etc/phpmyadmin/apache.conf
+
+    - name: Configure Apache to redirect the default page to phpMyAdmin
+      blockinfile:
+        path: /etc/apache2/sites-available/000-default.conf
+        insertafter: '^<VirtualHost \*:80>$'
+        block: |
+          # Redirect the default page to phpMyAdmin
+          RedirectMatch ^/$ /phpmyadmin/
+
+    - name: Restart Apache to apply changes
+      service:
+        name: apache2
+        state: restarted
+        enabled: true

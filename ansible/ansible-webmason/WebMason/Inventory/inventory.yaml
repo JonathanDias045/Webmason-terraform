@@ -1,0 +1,27 @@
+all:
+  vars:
+    ansible_ssh_common_args: '-o ServerAliveInterval=50 -o ServerAliveCountMax=10'
+
+web:
+  hosts:
+    vitrine:
+      ansible_host: "{{ host }}"
+      ansible_user: "{{ login }}"
+
+web2:
+  hosts:
+    gestion:
+      ansible_host: "{{ host }}"
+      ansible_user: "{{ login }}"
+
+phpmyadmin:
+  hosts:
+    bdd:
+      ansible_host: "{{ host }}"
+      ansible_user: "{{ login }}"
+
+cfai:
+  children:
+    web:
+    web2:
+    phpmyadmin:
