@@ -745,3 +745,9 @@ Ensuite, exécutez la commande suivante :
 Quand la question « Enter a value: » s'affiche, répondez par « yes ».
 
 Une fois cette étape réalisée, il faudra attendre environ 5 minutes pour que les machines virtuelles soient créées et configurées.
+
+Pour vérifier que tout a fonctionné, vous pouvez accéder aux sites web suivants :
+
+- [Site web de la base de donnée phpMyAdmin](http://webmason-bdd.final.cfai24.ajformation.fr)
+- [Site web vitrine de l'entreprise](http://webmason-vitrine.final.cfai24.ajformation.fr)
+- [Site de gestion de l'entreprise](http://webmason-gestion.final.cfai24.ajformation.fr)
